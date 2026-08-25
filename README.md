@@ -10,8 +10,8 @@ on the Free plan).
 
 | Page | URL |
 | --- | --- |
-| Home | https://alhessan.github.io/routineloop-privacy/ |
-| Privacy Policy | https://alhessan.github.io/routineloop-privacy/privacy-policy.html |
+| Home | https://alhessan.github.io/routineloop/ |
+| Privacy Policy | https://alhessan.github.io/routineloop/privacy-policy.html |
 
 The Privacy Policy URL is the one registered in Google Play Console under
 **App content → Privacy policy**. Do not rename or move `privacy-policy.html`

@@ -107,6 +107,18 @@ a:hover { text-decoration: underline; }
   color: var(--c-primary); text-decoration: none;
 }
 .nav-brand:hover { text-decoration: none; }
+.nav-brand { display: inline-flex; align-items: center; gap: 0.5rem; }
+.nav-brand img { height: 26px; width: auto; }
+.hero-logo { display: block; height: 72px; width: auto; margin: 0 auto 0.75rem; }
+html[data-lang="ar"] div[lang="ar"] .hero-logo { margin: 0 0 0.75rem auto; }
+/* Screenshots: a row on wide screens, a swipeable strip on phones */
+.shots { display: flex; gap: 1.25rem; justify-content: center; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.5rem 0.25rem 1.25rem; scrollbar-width: none; }
+.shots::-webkit-scrollbar { display: none; }
+.shot { flex: 0 0 auto; width: 210px; margin: 0; scroll-snap-align: center; text-align: center; }
+.shot img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--c-border); box-shadow: 0 12px 30px rgba(26, 66, 75, 0.16); background: var(--c-surface); }
+.shot figcaption { margin-top: 0.75rem; font-size: 0.95rem; color: var(--c-text2); line-height: 1.4; }
+.shot figcaption b { display: block; color: var(--c-primary-dark); font-family: var(--ff-heading); }
+@media (max-width: 720px) { .shots { justify-content: flex-start; } .shot { width: 72%; max-width: 260px; } }
 .lang-btns { display: flex; gap: 0.25rem; }
 .lang-btn {
   background: none; border: 1px solid var(--c-border); border-radius: 6px;
@@ -347,7 +359,7 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
 <!-- Navigation -->
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">RoutineLoop</a>
+    <a href="index.html" class="nav-brand"><img src="logo-mark.png" alt="" width="48" height="26">RoutineLoop</a>
     <div class="lang-btns" role="group" aria-label="Language selection">
       <button class="lang-btn" onclick="setLang('en')" aria-label="Switch to English">EN</button>
       <button class="lang-btn" onclick="setLang('ar')" aria-label="التبديل إلى العربية">العربية</button>
@@ -365,6 +377,7 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
       <div class="ring ring-3"></div>
     </div>
     <div class="container hero">
+      <img class="hero-logo" src="logo-mark.png" alt="RoutineLoop logo" width="132" height="72">
       <h1>RoutineLoop</h1>
       <p class="tagline">Reminders for the things that repeat but aren't daily.</p>
       <p class="subtext">Forgot the water filter again? The plants, the rent, the yearly insurance: set them once, and RoutineLoop keeps track.</p>
@@ -372,6 +385,17 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.61 1.81L13.64 12 3.61 22.19a.99.99 0 0 1-.11-.47V2.28a.99.99 0 0 1 .11-.47zm11.53 11.53l2.84-2.84 3.23 1.87a1 1 0 0 1 0 1.73l-3.23 1.87-2.84-2.84zm-1.42 1.42L4.42 23.64l8.83-5.1 2.47-2.47v-.01zm0-2.84L13.25 9.46 4.42.36l9.3 9.56z" fill="currentColor"/></svg>
         Google Play
       </a>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Your whole year, one pinch away">
+    <div class="container">
+      <h2 class="section-title">Your whole year, one pinch away</h2>
+      <div class="shots">
+        <figure class="shot"><img src="screens/year-en.jpg" alt="Year view: one row per routine across the whole year" width="540" height="1200" loading="lazy"><figcaption><b>One row per routine</b>See what you kept up with, what slipped, and what's coming.</figcaption></figure>
+        <figure class="shot"><img src="screens/panel-en.jpg" alt="A routine's panel showing a 26-day streak and 97% done" width="540" height="1200" loading="lazy"><figcaption><b>Tap for the details</b>Streak, last 30 days, and the next one.</figcaption></figure>
+        <figure class="shot"><img src="screens/week-en.jpg" alt="Week view with done and upcoming routines" width="540" height="1200" loading="lazy"><figcaption><b>Zoom in to the week</b>Done in solid, upcoming in outline.</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -388,9 +412,7 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
         <!-- Uncomment once v1.2.0 is live on Play (still in closed testing):
         <article class="feature-card"><span class="feature-icon" aria-hidden="true">🔔</span><h3>It checks back</h3><p>If a routine is still open a few hours later, it reminds you once more, never overnight. Snooze fits the routine: an hour for a daily one, a day for a monthly one.</p></article>
         -->
-        <!-- Uncomment once v1.3.0 (calendar) is live on Play:
         <article class="feature-card"><span class="feature-icon" aria-hidden="true">🗓️</span><h3>Your year in one pinch</h3><p>Zoom from today's hours out to the whole year. Every routine gets its own row: what you kept up with, what slipped, what's coming.</p></article>
-        -->
       </div>
     </div>
   </section>
@@ -441,6 +463,7 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
       <div class="ring ring-3"></div>
     </div>
     <div class="container hero ar-body">
+      <img class="hero-logo" src="logo-mark.png" alt="شعار RoutineLoop" width="132" height="72">
       <h1>RoutineLoop</h1>
       <p class="tagline">تذكير للأشياء التي تتكرر لكنها ليست يومية.</p>
       <p class="subtext">نسيت فلتر الماء مرة أخرى؟ النباتات، الإيجار، تأمين السيارة السنوي: اضبطها مرة واحدة، وRoutineLoop يتابعها عنك.</p>
@@ -448,6 +471,17 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.61 1.81L13.64 12 3.61 22.19a.99.99 0 0 1-.11-.47V2.28a.99.99 0 0 1 .11-.47zm11.53 11.53l2.84-2.84 3.23 1.87a1 1 0 0 1 0 1.73l-3.23 1.87-2.84-2.84zm-1.42 1.42L4.42 23.64l8.83-5.1 2.47-2.47v-.01zm0-2.84L13.25 9.46 4.42.36l9.3 9.56z" fill="currentColor"/></svg>
         Google Play
       </a>
+    </div>
+  </section>
+
+  <section class="section" aria-label="سنتك كاملة بقرصة واحدة">
+    <div class="container">
+      <h2 class="section-title" dir="rtl">سنتك كاملة بقرصة واحدة</h2>
+      <div class="shots" dir="rtl">
+        <figure class="shot"><img src="screens/year-ar.jpg" alt="عرض السنة: صف لكل روتين على مدار السنة" width="540" height="1200" loading="lazy"><figcaption><b>صفّ لكل روتين</b>ترى ما التزمت به، وما فاتك، وما هو قادم.</figcaption></figure>
+        <figure class="shot"><img src="screens/panel-ar.jpg" alt="لوحة روتين تُظهر 26 يومًا متتاليًا و97% إنجاز" width="540" height="1200" loading="lazy"><figcaption><b>المس لترى التفاصيل</b>أيام متتالية، وآخر 30 يومًا، والموعد القادم.</figcaption></figure>
+        <figure class="shot"><img src="screens/week-ar.jpg" alt="عرض الأسبوع مع روتينات منجزة وقادمة" width="540" height="1200" loading="lazy"><figcaption><b>قرّب إلى الأسبوع</b>المنجز ممتلئ، والقادم بإطار.</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -464,9 +498,7 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
         <!-- أزل التعليق بعد نشر الإصدار 1.2.0 على Play (ما زال في الاختبار المغلق):
         <article class="feature-card" dir="rtl"><span class="feature-icon" aria-hidden="true">🔔</span><h3>يعود إليك</h3><p>إن بقي الروتين مفتوحًا بعد بضع ساعات، يذكّرك مرة أخرى، وليس ليلًا. والتأجيل على مقاس الروتين: ساعة لليومي، ويوم للشهري.</p></article>
         -->
-        <!-- أزل التعليق بعد نشر الإصدار 1.3.0 (التقويم) على Play:
         <article class="feature-card" dir="rtl"><span class="feature-icon" aria-hidden="true">🗓️</span><h3>سنتك بقرصة واحدة</h3><p>من ساعات اليوم إلى السنة كاملة. لكل روتين صفّه الخاص: ما التزمت به، وما فاتك، وما هو قادم.</p></article>
-        -->
       </div>
     </div>
   </section>

@@ -118,6 +118,14 @@ html[data-lang="ar"] div[lang="ar"] .hero-logo { margin: 0 0 0.75rem auto; }
 .shot img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--c-border); box-shadow: 0 12px 30px rgba(26, 66, 75, 0.16); background: var(--c-surface); }
 .shot figcaption { margin-top: 0.75rem; font-size: 0.95rem; color: var(--c-text2); line-height: 1.4; }
 .shot figcaption b { display: block; color: var(--c-primary-dark); font-family: var(--ff-heading); }
+/* Video: a local cover with a play button; YouTube loads only on tap */
+.video { position: relative; display: block; width: 240px; aspect-ratio: 9 / 16; margin: 0 auto; padding: 0; border: 0; border-radius: 22px; overflow: hidden; cursor: pointer; background: #1a424b; box-shadow: 0 12px 30px rgba(26, 66, 75, 0.2); }
+.video img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 68px; border-radius: 50%; background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); transition: transform 0.2s; }
+.video:hover .play, .video:focus-visible .play { transform: scale(1.08); }
+.video .play svg { margin-left: 4px; }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-note { text-align: center; margin-top: 0.75rem; font-size: 0.95rem; color: var(--c-text2); }
 @media (max-width: 720px) { .shots { justify-content: flex-start; } .shot { width: 72%; max-width: 260px; } }
 .lang-btns { display: flex; gap: 0.25rem; }
 .lang-btn {
@@ -388,6 +396,17 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
     </div>
   </section>
 
+  <section class="section" aria-label="See it in action">
+    <div class="container">
+      <h2 class="section-title">See it in action</h2>
+      <button type="button" class="video" data-video="JXhDuJbkKKM" aria-label="Play the RoutineLoop video">
+        <img src="screens/video-poster.jpg" alt="" width="405" height="720" loading="lazy">
+        <span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#265e6a"/></svg></span>
+      </button>
+      <p class="video-note">A short video. Tap to play.</p>
+    </div>
+  </section>
+
   <section class="section" aria-label="Your whole year, one pinch away">
     <div class="container">
       <h2 class="section-title">Your whole year, one pinch away</h2>
@@ -471,6 +490,17 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.61 1.81L13.64 12 3.61 22.19a.99.99 0 0 1-.11-.47V2.28a.99.99 0 0 1 .11-.47zm11.53 11.53l2.84-2.84 3.23 1.87a1 1 0 0 1 0 1.73l-3.23 1.87-2.84-2.84zm-1.42 1.42L4.42 23.64l8.83-5.1 2.47-2.47v-.01zm0-2.84L13.25 9.46 4.42.36l9.3 9.56z" fill="currentColor"/></svg>
         Google Play
       </a>
+    </div>
+  </section>
+
+  <section class="section" aria-label="شاهده وهو يعمل">
+    <div class="container">
+      <h2 class="section-title" dir="rtl">شاهده وهو يعمل</h2>
+      <button type="button" class="video" data-video="JXhDuJbkKKM" aria-label="تشغيل فيديو RoutineLoop">
+        <img src="screens/video-poster.jpg" alt="" width="405" height="720" loading="lazy">
+        <span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#265e6a"/></svg></span>
+      </button>
+      <p class="video-note" dir="rtl">فيديو قصير. المس للتشغيل.</p>
     </div>
   </section>
 
@@ -578,6 +608,21 @@ html[data-lang="ar"] .use-cases { justify-content: center; }
 
   window.setLang = setLang;
   initLang();
+
+  // Video: swap the cover for the YouTube player on tap (no YouTube request before that)
+  document.querySelectorAll('.video[data-video]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.getAttribute('data-video') + '?autoplay=1&rel=0&playsinline=1';
+      f.title = btn.getAttribute('aria-label');
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      var box = document.createElement('div');
+      box.className = 'video';
+      box.appendChild(f);
+      btn.replaceWith(box);
+    });
+  });
 
   // IntersectionObserver for staggered card reveals
   if ('IntersectionObserver' in window) {

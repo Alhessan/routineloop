@@ -20,7 +20,7 @@ without updating Play Console — a 404 there blocks app review.
 ## Editing
 
 Both pages are single self-contained HTML files (inline CSS/JS, no build step).
-Local assets: `logo-mark.png`, `og-image.jpg` and the screenshots in `screens/`. The only external request is Google Fonts.
+Local assets: `logo-mark.png`, `og-image.jpg` and the screenshots and the video cover in `screens/`. The only external request is Google Fonts.
 
 `privacy-policy.md` is the plain-text source of the policy, kept in sync for
 reference.
